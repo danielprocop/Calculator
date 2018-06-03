@@ -12,19 +12,21 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            IConsoleWrapper consoleWrapper = new ConsoleWrapper();
-            IGetterOperation getterOperation = null;
-            bool inputFromConsole = false;
-
+            string arg;
             if (args.Length == 0)
             {
-                consoleWrapper.WriteLine(ConsoleMessages.NullArgs);
-                Environment.Exit(1);
+                arg = GetTypeOfInput();
             }
-
+            else
+            {
+                arg = args[0];
+            }
             try
             {
-                if (args[0] == InputFromConsole.OperationFromConsole)
+                IConsoleWrapper consoleWrapper = new ConsoleWrapper();
+                IGetterOperation getterOperation = null;
+                bool inputFromConsole = false;
+                if (arg == InputFromConsole.OperationFromConsole)
                 {
                     inputFromConsole = true;
                     getterOperation = new GetterOperationFromConsole(
@@ -32,7 +34,7 @@ namespace Calculator
                 }
                 else
                 {
-                    getterOperation = new GetterOperationFromFile(args[0], new FileWrapper());
+                    getterOperation = new GetterOperationFromFile(arg, new FileWrapper());
                 }
 
                 Calculator calculator = new Calculator(inputFromConsole, getterOperation, consoleWrapper);
@@ -43,6 +45,21 @@ namespace Calculator
                 Environment.Exit(1);
             }
 
+        }
+        private static string GetTypeOfInput()
+        {
+            Console.WriteLine(ConsoleMessages.NullArgs);
+            string arg = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(arg))
+            {
+                Program.GetTypeOfInput();
+            }
+            if (arg == "x")
+            {
+                Environment.Exit(0);
+            }
+            return arg;
         }
     }
 }

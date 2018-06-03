@@ -2,7 +2,10 @@
 {
     public class ConsoleMessages
     {
-        public const string NullArgs ="the argument is required, please insert 'interactive' for input from console or the path of the file";
+        public const string NullArgs = "the argument is required, please insert:\n\r" +
+            "interactive - for input from console or\n\r" +
+            "the path of the file or\n\r" +
+            "x for close";
         public const string PressEnterCloseApplication = "press enter to close!";
         public const string CheckIfNewOperation = "please insert [y] for another operation or [x] for close: ";
         public const string InvalidArgument = "The argument [{0}] is invalid...";
