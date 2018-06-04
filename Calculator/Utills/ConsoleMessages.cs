@@ -11,7 +11,7 @@
         public const string InvalidArgument = "The argument [{0}] is invalid...";
         public const string InvalidOperator = "The operator [{0}] is invalid...";
         public const string InsertFirstNumber = "Insert the first number: ";
-        public const string InsertSecondNumber = "Insert the first number: ";
+        public const string InsertSecondNumber = "Insert the second number: ";
         public const string InsertOperator = "Insert the operator ({0}): ";
         public const string FileNotFound = "File not found! ";
         public const string InvalidFile = "The parameters in the file must be 3, in this format:\r\n" +
